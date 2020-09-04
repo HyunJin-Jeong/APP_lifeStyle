@@ -1,4 +1,15 @@
-console.dir(window.addEventListener)
+const title = document.querySelector("#title");
+const CLICKED_CLASS = "clicked";
+console.dir(title.classList)
+
+function handleClick(){
+    title.classList.toggle(CLICKED_CLASS)
+}
+
+function init(){
+    title.addEventListener("click", handleClick);
+}
+init();
 
 /*
 const title = document.querySelector("#title");
@@ -39,4 +50,6 @@ function init(){
     title.addEventListener("click", handleClick);
 }
 init();
+
+console.dir(window.addEventListener)
 */
