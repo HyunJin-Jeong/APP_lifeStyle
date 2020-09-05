@@ -1,6 +1,7 @@
 const clockContainer = document.querySelector(".js-clock"),
     clockTitle = clockContainer.querySelector("h1");
 
+// 현재 시간을 불러오는 함수
 function getTime(){
     const date = new Date();
     const minutes = date.getMinutes();
@@ -10,7 +11,7 @@ function getTime(){
 }
 
 function init(){
-    setInterval(getTime, 10)
+    setInterval(getTime, 10) // 시간이 지속적으로 동기화되도록(업데이트 시간은 10ms)
 }
 
 init();
