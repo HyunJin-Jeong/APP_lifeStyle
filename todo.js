@@ -3,17 +3,31 @@ const toDoForm = document.querySelector(".js-toDoForm"),
     toDoList = document.querySelector(".js-toDoList")
 
 const toDo = 'toDos';
+const toDos = [];
 
-// handleSubmit으로 부터 받은 toDo 값을 HTML tag에 추가
+// local Storage에 to do list 저장(Object 저장 불가능 -> string으로 변환)
+function saveToDos(){
+    localStorage.setItem(toDo, JSON.stringify(toDos));
+}
+
+// handleSubmit으로 부터 받은 toDo 값을 HTML tag와 Array에 추가
 function paintToDo(text){
     const li = document.createElement("li");
     const deleteBtn = document.createElement("button");
-    deleteBtn.innerText = "Delete";
     const span = document.createElement("span");
+    const newId = toDos.length + 1;
+    deleteBtn.innerText = "Delete";
     span.innerText = text
     li.appendChild(span);
     li.appendChild(deleteBtn);
+    li.id = newId;
     toDoList.appendChild(li);
+    const toDoObject = {
+        text: text,
+        id: newId,
+    };
+    toDos.push(toDoObject);
+    saveToDos();
 }
 
 // submit 된 값을 목적에 맞는 함수로 보냄
@@ -25,8 +39,12 @@ function handleSubmit(event){
 }
 
 function loadToDos(){
-    const toDos = localStorage.getItem(toDo);
-    if(toDos !== null){
+    const loadedToDos = localStorage.getItem(toDo);
+    if(loadedToDos !== null){
+        const parsedToDos = JSON.parse(loadedToDos);
+        parsedToDos.forEach(function(toDo){
+            paintToDo(toDo.text);
+        })
     }
 }
 
