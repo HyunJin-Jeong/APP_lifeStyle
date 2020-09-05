@@ -3,7 +3,19 @@ const toDoForm = document.querySelector(".js-toDoForm"),
     toDoList = document.querySelector(".js-toDoList")
 
 const toDo = 'toDos';
-const toDos = [];
+let toDos = [];
+
+// to do list 지우는 함수
+function deleteToDo(){
+    const btn = event.target;
+    const li = btn.parentNode;
+    toDoList.removeChild(li);
+    const cleanToDos = toDos.filter(function(t){
+        return t.id !== parseInt(li.id);
+    });
+    toDos = cleanToDos;
+    saveToDos();
+}
 
 // local Storage에 to do list 저장(Object 저장 불가능 -> string으로 변환)
 function saveToDos(){
@@ -15,8 +27,9 @@ function paintToDo(text){
     const li = document.createElement("li");
     const deleteBtn = document.createElement("button");
     const span = document.createElement("span");
-    const newId = toDos.length + 1;
+    const newId = Date.now();
     deleteBtn.innerText = "Delete";
+    deleteBtn.addEventListener("click", deleteToDo);
     span.innerText = text
     li.appendChild(span);
     li.appendChild(deleteBtn);
@@ -38,11 +51,12 @@ function handleSubmit(event){
     toDoInput.value = ""; // 입력 후 Enter누르면 값이 비어짐
 }
 
+// local Storage에 to do가 존재하면 자동으로 띄움
 function loadToDos(){
     const loadedToDos = localStorage.getItem(toDo);
     if(loadedToDos !== null){
         const parsedToDos = JSON.parse(loadedToDos);
-        parsedToDos.forEach(function(toDo){
+        parsedToDos.forEach(function(toDo){ // todo 내용을 paintToDo 함수로 보내는 함수
             paintToDo(toDo.text);
         })
     }
