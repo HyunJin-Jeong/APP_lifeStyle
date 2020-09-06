@@ -1,4 +1,4 @@
-#  Application
+#  Life Style
 
 ### 서비스 소개
 #### JavaScript를 공부하며 만든 간단한 'Application' 입니다.
