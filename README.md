@@ -3,7 +3,7 @@
 ### 서비스 소개
 #### JavaScript를 공부하며 만든 간단한 'Application' 입니다.
 
-<img src="service.png" width=365 height=170><br><br>
+<img src="./image/service.png" width=365 height=170><br><br>
 
 🕐 시간을 알려요.<br>
 
