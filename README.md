@@ -5,11 +5,11 @@
 
 <img src="./image/service.png" width=365 height=170><br><br>
 
-🕐 시간을 알려요.<br>
+🕐 - 시간을 알려요.<br>
 
-📌 할 일을 기록해요.<br>
+📌 - 할 일을 기록해요.<br>
 
-☀️ 날씨를 알 수 있어요.<br>
+☀️ - 날씨를 알 수 있어요.<br>
 
 <br>
 
